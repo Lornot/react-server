@@ -13,7 +13,14 @@ app.all('/*', function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-var ingredients = [{"id":1, "text":"ham"},{"id":2,"text":"cheese"},{"id":3,"text":"potatoes"}];
+var ingredients = [
+    {"id":1,"text":"ham"},
+    {"id":2,"text":"cheese"},
+    {"id":3,"text":"potatoes"},
+    {"id":4,"text":"cherry"},
+    {"id":5,"text":"cake"},
+    {"id":6,"text":"macarons"}
+]; 
 
 
 app.get('/ingredients', function (req, res) {
@@ -21,11 +28,11 @@ app.get('/ingredients', function (req, res) {
 });
 
 
-// app.post('/ingredients', function(req, res) {
-//     var ingredient = req.body;
-//     console.log(req.body);
-//     ingredients.push(ingredient);
-//     res.status(200).send("Successfully posted ingredient");
-// });
+app.post('/ingredients', function(req, res) {
+    var ingredient = req.body;
+    console.log(req.body);
+    ingredients.push(ingredient);
+    res.status(200).send("Successfully posted ingredient");
+});
 
 app.listen(6069);
